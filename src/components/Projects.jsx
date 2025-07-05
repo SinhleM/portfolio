@@ -1,53 +1,33 @@
-// src/components/Projects.jsx
 import React from 'react';
 
-const Projects = () => {
-  const experiences = [
-    {
-      company: 'Google',
-      position: 'Lead Software Engineer at Google',
-      period: 'Nov 2019 - Present',
-      description: 'As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for Google\'s core search algorithms. Collaborating with a dynamic team of engineers, I contributed to the enhancement of search accuracy and efficiency, optimizing user experiences for millions of users worldwide.',
-      logo: 'G',
-      bgColor: 'bg-blue-500'
-    },
-    {
-      company: 'YouTube',
-      position: 'Software Engineer at YouTube',
-      period: 'Jan 2017 - Oct 2019',
-      description: 'At YouTube, I served as a Software Engineer, focusing on the design and implementation of backend systems for the social media giant\'s dynamic platform. Working on projects that involved large-scale data processing and user engagement features, I leveraged my expertise to ensure seamless functionality and scalability.',
-      logo: '▶',
-      bgColor: 'bg-red-500'
-    }
-  ];
+// Projects component is a placeholder to display portfolio items.
+// Although not detailed in the screenshot, it's a standard and requested part of a portfolio.
+// It features a grid of project cards with placeholder images and information.
+function Projects() {
+    const projects = [
+        { title: 'Project One', description: 'A brief description of the first project, highlighting the technologies and challenges.', image: 'https://placehold.co/600x400/2d3748/ffffff?text=Project+1' },
+        { title: 'Project Two', description: 'A brief description of the second project, highlighting the technologies and challenges.', image: 'https://placehold.co/600x400/4a5568/ffffff?text=Project+2' },
+        { title: 'Project Three', description: 'A brief description of the third project, highlighting the technologies and challenges.', image: 'https://placehold.co/600x400/2d3748/ffffff?text=Project+3' },
+    ];
 
-  return (
-    <section id="experience" className="py-20 bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold">My <span className="font-bold">Experience</span></h2>
-        </div>
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="border border-gray-700 rounded-lg p-8">
-              <div className="flex items-start space-x-4">
-                <div className={`w-12 h-12 ${exp.bgColor} rounded flex items-center justify-center text-white font-bold text-xl`}>
-                  {exp.logo}
+    return (
+        <section id="project" className="py-20 bg-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">My Projects</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, index) => (
+                        <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                            <div className="p-6">
+                                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                <p className="text-gray-600">{project.description}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold">{exp.position}</h3>
-                    <span className="text-gray-400 text-sm">{exp.period}</span>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed">{exp.description}</p>
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+        </section>
+    );
+}
 
 export default Projects;

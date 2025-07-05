@@ -1,7 +1,7 @@
-// src/components/About.jsx
+// src/components/Skills.jsx
 import React from 'react';
 
-const About = () => {
+const Skills = () => {
   const skills = [
     { name: 'Git', icon: '🔧' },
     { name: 'Javascript', icon: 'JS', dark: true },
@@ -44,4 +44,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Skills;

@@ -2,18 +2,20 @@
 import React from 'react';
 import Header from './Header';
 import Hero from './Hero';
-import About from './About';
+import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
+import Skills from './Skills';
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <About />
       <Projects />
+      <Experience />
+      <Skills />
       <Contact />
       <Footer />
     </div>
