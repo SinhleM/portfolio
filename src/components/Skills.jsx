@@ -1,39 +1,70 @@
 // src/components/Skills.jsx
 import React from 'react';
+// Importing specific icons from lucide-react
+import {
+  Database, // For MySQL
+  Cloud,    // For AWS
+  Workflow, // For Apache Airflow / CI/CD
+  Box,      // For Docker / Kubernetes (generic box/container)
+  Zap,      // For Apache Kafka (representing speed/streams)
+  GitFork,  // For CI/CD (alternative) / Github (alternative)
+  Github,   // For Github
+  Atom,     // For React (alternative)
+  Code,     // For Python (generic code icon)
+  Settings  // For Git (generic tool icon)
+} from 'lucide-react';
 
 const Skills = () => {
   const skills = [
-    { name: 'Git', icon: '🔧' },
-    { name: 'Javascript', icon: 'JS', dark: true },
-    { name: 'Sass/Scss', icon: '🎨' },
-    { name: 'Nest.Js', icon: '🐺' },
-    { name: 'Storybook', icon: '📚' },
-    { name: 'Nest.Js', icon: '🐺' },
-    { name: 'Git', icon: '🔧' },
-    { name: 'Storybook', icon: '📚' },
-    { name: 'Socket.io', icon: '⚡' },
-    { name: 'Sass/Scss', icon: '🎨' }
+    { name: 'Python', icon: 'Code' },
+    { name: 'MySQL', icon: 'Database', dark: true },
+    { name: 'AWS', icon: 'Cloud' },
+    { name: 'Apache Airflow', icon: 'Workflow' },
+    { name: 'Docker', icon: 'Box', dark: true },
+    { name: 'Apache Kafka', icon: 'Zap' },
+    { name: 'CI/CD', icon: 'GitFork' }, // This border will be black
+    { name: 'Kubernetes', icon: 'Box' },
+    { name: 'Github', icon: 'Github', dark: true },
+    { name: 'React', icon: 'Atom' }
   ];
+
+  // Helper function to render icons based on their name
+  const renderSkillIcon = (iconName) => {
+    const iconClasses = "w-8 h-8"; // Consistent size for all icons
+    switch (iconName) {
+      case 'Code': return <Code className={iconClasses} />;
+      case 'Database': return <Database className={iconClasses} />;
+      case 'Cloud': return <Cloud className={iconClasses} />;
+      case 'Workflow': return <Workflow className={iconClasses} />;
+      case 'Box': return <Box className={iconClasses} />;
+      case 'Zap': return <Zap className={iconClasses} />;
+      case 'GitFork': return <GitFork className={iconClasses} />;
+      case 'Github': return <Github className={iconClasses} />;
+      case 'Atom': return <Atom className={iconClasses} />;
+      case 'Settings': return <Settings className={iconClasses} />;
+      default: return <span>{iconName}</span>; // Fallback for any unmapped icons
+    }
+  };
 
   return (
     <section id="skills" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900">My <span className="font-bold">Skills</span></h2>
+          <h2 className="text-4xl md:text-5xl text-gray-900 antialiased">
+            <span className="font-normal">My</span> <span className="font-bold">Skills</span>
+          </h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
-            <div key={index} className={`p-6 rounded-lg border-2 border-gray-200 flex flex-col items-center justify-center h-32 ${skill.dark ? 'bg-gray-900 text-white' : 'bg-white'}`}>
+            <div
+              key={index}
+              // Conditionally apply border-black based on skill name
+              className={`p-6 border-2 flex flex-col items-center justify-center h-32 shadow-md hover:shadow-xl transition-shadow duration-300 bg-white text-gray-900
+                ${['Python', 'CI/CD', 'Apache Airflow'].includes(skill.name) ? 'border-black' : 'border-gray-200'}
+              `}
+            >
               <div className="text-2xl mb-2">
-                {skill.icon === 'JS' ? (
-                  <span className="text-2xl font-bold">JS</span>
-                ) : skill.icon === '🔧' ? (
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                ) : (
-                  <span>{skill.icon}</span>
-                )}
+                {renderSkillIcon(skill.icon)}
               </div>
               <span className="text-sm font-medium text-center">{skill.name}</span>
             </div>
