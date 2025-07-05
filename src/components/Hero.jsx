@@ -17,7 +17,7 @@ function Hero() {
                 <path fill="#edf2f7" d="M136.3,95.5l-39.8,19.1c-2.2,1.1-3.6,3.3-3.6,5.7v22.2c0,3.5,2.8,6.3,6.3,6.3h37.5c3.5,0,6.3-2.8,6.3-6.3v-37.1 C143.1,99.8,140.2,96.1,136.3,95.5z"/>
                 <path fill="#1a202c" d="M92.9,117.3v22.2c0,2.1,1.7,3.8,3.8,3.8h37.5c2.1,0,3.8-1.7,3.8-3.8v-37.1c0-2.6-1.6-4.9-4-5.8L92.9,117.3z"/>
                 <rect x="80" y="145" width="70" height="5" rx="2.5" fill="#edf2f7" />
-                 <path fill="#edf2f7" d="M150,150h-50c-2.8,0-5,2.2-5,5v10c0,2.8,2.2,5,5,5h50c2.8,0,5-2.2,5-5v-10C155,152.2,152.8,150,150,150z" />
+                <path fill="#edf2f7" d="M150,150h-50c-2.8,0-5,2.2-5,5v10c0,2.8,2.2,5,5,5h50c2.8,0,5-2.2,5-5v-10C155,152.2,152.8,150,150,150z" />
             </g>
         </svg>
     );
@@ -31,7 +31,8 @@ function Hero() {
     ];
 
     return (
-        <section id="hero" className="bg-white py-20 md:py-32">
+        // Changed py-20 to py-12, and md:py-32 to md:py-20 for less vertical space
+        <section id="hero" className="bg-white py-12 md:py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
@@ -60,10 +61,11 @@ function Hero() {
                         <Illustration />
                     </div>
                 </div>
-                <div className="border-b border-gray-200 mt-20 md:mt-32"></div>
+                {/* Changed mt-20 to mt-12, and md:mt-32 to md:mt-20 for less vertical space */}
+                <div className="border-b border-gray-200 mt-12 md:mt-20"></div>
             </div>
         </section>
     );
 }
 
-export default Hero;    
+export default Hero;

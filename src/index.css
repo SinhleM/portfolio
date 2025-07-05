@@ -2,13 +2,46 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* Use Inter as the primary sans-serif font */
+  font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Optional: If you want to apply the monospace font to specific elements */
+code, pre, .font-code { /* You can add a custom class like 'font-code' */
+  font-family: 'Roboto Mono', monospace;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%); /* Changed from -100% to -50% for seamless loop when content is duplicated once */
+  }
+}
+
+/* Apply the animation */
+.animate-tech-scroll {
+  animation: scroll-left 35s linear infinite; /* Increased duration to 35s for slower animation */
+  white-space: nowrap; /* Keep items on a single line */
+  display: inline-block; /* Ensure it respects width for scrolling */
+  /* No change needed here, these properties are correct */
+}
+
+/* For seamless looping, we'll duplicate the content. */
+.animate-tech-scroll > span {
+  display: inline-block;
+  margin-right: 1rem; /* Adjust spacing between technologies if needed */
+}
+
+/* Optional: For hover pause (nice UX) */
+.group:hover .animate-tech-scroll {
+    animation-play-state: paused;
 }

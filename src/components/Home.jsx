@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from './Header';
 import Hero from './Hero';
-import Experience from './Experience';
+// import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -14,7 +14,7 @@ const Home = () => {
       <Header />
       <Hero />
       <Projects />
-      <Experience />
+      
       <Skills />
       <Contact />
       <Footer />
