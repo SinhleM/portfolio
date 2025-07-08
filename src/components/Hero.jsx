@@ -24,7 +24,7 @@ function Hero() {
             }}
         >
             {/* Overlay for text readability */}
-            <div className="absolute inset-0 bg-white opacity-50"></div>
+            <div className="absolute inset-0 bg-white opacity-80"></div>
 
             {/* Main content container, positioned above the overlay */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -33,8 +33,7 @@ function Hero() {
                     <div className="text-center md:text-left">
                         {/* Main Hero Text - ADDED TOP PADDING HERE */}
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-black pt-6"> {/* Added pt-6 for top padding */}
-                            Hello, I’m <span className="inline-block">Sinhle Mkhabela</span>{' '}
-                            {/* Re-added the "Data Engineer" span */}
+                            Hello, I’m <span className="inline-block">Sinhle Mkhabela</span>
                             based in Johannesburg.
                         </h1>
                         {/* Sub Description Hero Text */}

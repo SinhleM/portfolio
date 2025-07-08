@@ -1,63 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ProjectModal from './ProjectModal'; // Make sure to import the new modal component
 
 function Projects() {
+    const [selectedProject, setSelectedProject] = useState(null);
+
     const projects = [
         {
-            title: 'Project One: E-commerce Platform',
-            description: 'Developed a responsive e-commerce site with full CRUD operations for products and user authentication, focusing on user experience and secure transactions.',
-            image: 'https://picsum.photos/seed/project1/600/400',
+            title: 'FNB Fraud Detection Pipeline',
+            description: 'A responsive e-commerce site with full CRUD operations.',
+            // --- UPDATED IMAGES HERE ---
+            images: [
+                './FFD.png', 
+                './FF4.png',
+                './FFD2.png'
+            ],
+            // --- END UPDATED IMAGES ---
+            detailedDescription: 'Developed a full-featured, responsive e-commerce platform from scratch. The application allows for complete CRUD (Create, Read, Update, Delete) operations on products and includes secure user authentication. A major focus was placed on creating a seamless user experience and implementing secure transaction processing with Stripe integration. The modern UI was built using Tailwind CSS.',
             technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Tailwind CSS', 'Auth0']
         },
         {
-            title: 'Project Two: Task Management ',
-            description: 'Built a collaborative task manager with real-time updates using WebSockets, offering features like group assignments and deadline tracking.',
-            image: 'https://picsum.photos/seed/project2/600/400',
+            title: 'Project Two: Task Management',
+            description: 'A collaborative task manager with real-time updates.',
+            images: [
+
+                './TT1.png', 
+                './TT2.png',
+                './TT3.png'
+            ],
+            detailedDescription: 'Built a dynamic and collaborative task management application. This project features real-time updates using WebSockets, enabling teams to work together seamlessly. Key features include group assignments, deadline tracking, and a notification system. The backend is powered by Firebase for real-time data synchronization, and the frontend is built with Vue.js.',
             technologies: ['Vue.js', 'Firebase', 'Socket.io', 'PostgreSQL', 'Sass', 'Webpack']
         },
         {
             title: 'Project Three: Portfolio Redesign',
-            description: 'A complete overhaul of my personal portfolio, focusing on modern UI/UX, responsive design, and performance optimization for a seamless Browse experience.',
-            image: 'https://picsum.photos/seed/project3/600/400',
+            description: 'A modern overhaul of my personal portfolio.',
+            images: [
+                './GAD1.png', 
+                './GAD2.png',
+                './GAD3.png'
+            ],
+            detailedDescription: 'This project involved a complete redesign and rebuild of my personal portfolio to showcase my skills in modern web development. The focus was on creating a visually appealing, highly responsive UI/UX and ensuring optimal performance. I utilized Next.js for server-side rendering, GraphQL with Apollo Client for data fetching, and Framer Motion for smooth animations.',
             technologies: ['Next.js', 'GraphQL', 'Apollo Client', 'Tailwind CSS', 'Vercel', 'Framer Motion']
         },
-        // Add more projects here if you wish!
     ];
 
+    const handleProjectClick = (project) => {
+      setSelectedProject(project);
+    };
+
+    const handleCloseModal = () => {
+      setSelectedProject(null);
+    };
+
     return (
-        <section id="project" className="pt-16 pb-32 bg-black text-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="project" className="pt-16 pb-32 bg-zinc-50 text-white">
+            <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${selectedProject ? 'blur-sm' : ''}`}>
                 <h2 className="text-4xl md:text-5xl text-center mb-16 antialiased">
-                    <span className="font-normal">My</span> <span className="font-bold">Projects</span>
+                    <span className="font-medium text-black leading-tight">My</span> <span className="text-black font-semibold">Projects</span>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
-                        <a
-                            href="#"
+                        <div
                             key={index}
+                            onClick={() => handleProjectClick(project)}
                             className={`
-                                bg-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 relative group block
-                                ${
-                                    (index === 0 || index === 2) ? 'lg:-translate-y-8' : ''
-                                }
-                                ${
-                                    index === 1 ? 'lg:translate-y-8' : ''
-                                }
-                                ${
-                                    'md:translate-y-0 translate-y-0'
-                                }
+                                bg-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 relative group block cursor-pointer
+                                ${index === 0 || index === 2 ? 'lg:-translate-y-8 hover:lg:-translate-y-10' : ''}
+                                ${index === 1 ? 'lg:translate-y-8 hover:lg:translate-y-6' : ''}
+                                md:translate-y-0
                             `}
                         >
-                            <img src={project.image} alt={project.title} className="w-full h-64 object-cover" />
+                            <img src={project.images[0]} alt={project.title} className="w-full h-64 object-cover" />
                             <div className="p-6 pb-24">
                                 <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
                                 <p className="text-gray-700 text-center">{project.description}</p>
-
                                 <div className="border-b border-gray-500 w-2/3 mx-auto mt-4"></div>
                             </div>
-
-                            {/* Technologies Scroll - Removed 'items-center' and added 'pt-3' to inner div */}
-                            <div className="absolute bottom-0 left-0 w-full overflow-hidden h-20 bg-gray-100 flex"> {/* Removed items-center */}
-                                {/* Added pt-3 (padding-top) to push content down slightly from the top */}
+                            <div className="absolute bottom-0 left-0 w-full overflow-hidden h-20 bg-gray-100 flex">
                                 <div className="animate-tech-scroll flex-grow pl-6 pt-3">
                                     {[...project.technologies, ...project.technologies].map((tech, techIndex) => (
                                         <span
@@ -70,10 +88,12 @@ function Projects() {
                                     ))}
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     ))}
                 </div>
             </div>
+
+            <ProjectModal project={selectedProject} onClose={handleCloseModal} />
         </section>
     );
 }
