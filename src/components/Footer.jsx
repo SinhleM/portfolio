@@ -10,12 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           {/* New div for contact info and GitHub - now on the left */}
           <div className="flex flex-col items-center md:items-start space-y-3 mb-4 md:mb-0"> {/* Added mb for mobile spacing, md:items-start for left align */}
-            {/* Phone Number */}
-            <p className="flex items-center space-x-2 text-gray-400">
-              <Phone className="w-5 h-5 text-gray-400" />
-              <span>Phone:</span>
-              <a href="tel:+27721234567" className="hover:text-white transition duration-200">+27 73 986 9091</a>
-            </p>
+           
             {/* Email */}
             <p className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5 text-gray-400" />
