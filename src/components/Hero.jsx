@@ -20,7 +20,7 @@ function Hero() {
             // Using your provided image name and background position
             style={{
                 backgroundImage: `url('/herop.png')`, // Using /herop.png as in your last snippet
-                backgroundPosition: '50% 70%',          // ADDED: Significantly crops the top (40% down from image top aligns with element top)
+                backgroundPosition: '90% 70%',          // ADDED: Significantly crops the top (40% down from image top aligns with element top)
             }}
         >
             {/* Overlay for text readability */}
@@ -38,7 +38,7 @@ function Hero() {
                         </h1>
                         {/* Sub Description Hero Text */}
                         <p className="mt-6 text-lg text-gray-600 max-w-lg mx-auto md:mx-0">
-                            I’m passionate about building real-time data systems, pipelines, and cloud-native applications that turn raw data into powerful insights.
+                            Im a 3rd year Computer Science Student, passionate about building real-time data systems, pipelines, and cloud-native applications that turn raw data into powerful insights.
                         </p>
                         {/* Social Media Links (UNCHANGED as per your request) */}
                         <div className="mt-8 flex justify-center md:justify-start space-x-4">

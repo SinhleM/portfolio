@@ -11,7 +11,10 @@ const Contact = () => {
             Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
           </p>
           <div className="flex justify-center space-x-6">
-            <a href="mailto:evren@example.com" className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200">
+            <a
+              href="mailto:sinhlemkhabela01@gmail.com" // Make sure "mailto:" is at the beginning
+              className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200"
+            >
               Get In Touch
             </a>
           </div>
