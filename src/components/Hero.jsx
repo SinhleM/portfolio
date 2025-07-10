@@ -8,7 +8,7 @@ import { Linkedin, Github } from 'lucide-react';
 function Hero() {
     // Social media icons using Lucide React (Twitter and Instagram removed)
     const socialIcons = [
-        { href: "linkedin.com/in/sinhle-mkhabela-0b6812345", icon: <Linkedin className="w-6 h-6" /> },
+        
         { href: "https://github.com/SinhleM", icon: <Github className="w-6 h-6" /> },
     ];
 
@@ -47,7 +47,7 @@ function Hero() {
                                     key={index}
                                     href={social.href}
                                     className="text-gray-500 hover:text-black transition-colors duration-300
-                                               border border-gray-600 p-2 flex items-center justify-center"
+                                               border rounded border-gray-400 p-2 flex items-center justify-center"
                                 >
                                     {social.icon}
                                 </a>
