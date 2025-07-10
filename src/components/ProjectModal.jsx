@@ -58,7 +58,7 @@ function ProjectModal({ project, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 bg-zinc-300 bg-opacity-80 backdrop-blur-xl flex justify-center items-center z-50"
+      className="fixed inset-0 bg-opacity-80 backdrop-blur-xl flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div

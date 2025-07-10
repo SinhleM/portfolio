@@ -29,7 +29,14 @@
     <li><strong>Hosting</strong>: GitHub Pages / Netlify</li>
 </ul>
 
+<<<<<<< HEAD
 <hr>
+=======
+🛠️ Tech Stack
+Frontend: React, Tailwind CSS
+
+Hosting: GitHub Pages / Netlify
+>>>>>>> 7501e5f (certifications)
 
 <h3>📂 Sections</h3>
 <ul>

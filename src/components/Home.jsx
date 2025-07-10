@@ -1,25 +1,25 @@
-// src/components/Home.jsx
+// src/App.js (or similar main layout file)
 import React from 'react';
-import Header from './Header';
-import Hero from './Hero';
-// import Experience from './Experience';
-import Projects from './Projects';
-import Contact from './Contact';
-import Footer from './Footer';
-import Skills from './Skills';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Skills from '../components/Skills';
+import Projects from '../components/Projects';
+import Certifications from '../components/Certifications'; // NEW: Import Certifications
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
-const Home = () => {
+function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <Projects />
-      
-      <Skills />
-      <Contact />
+    <div>
+      <Header /> 
+        <Hero />
+        <Skills />
+        <Projects />
+        <Certifications /> {/* NEW: Add Certifications component here */}
+        <Contact />
       <Footer />
     </div>
   );
-};
+}
 
-export default Home;
+export default App;

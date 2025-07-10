@@ -9,9 +9,9 @@ const Header = () => {
             <div className="text-2xl font-bold text-gray-900 italic">Portfolio</div>
           </div>
           <nav className="hidden md:flex space-x-8">
-            {/* Removed About Me link */}
             <a href="#skills" className="text-gray-700 hover:text-gray-900 font-medium">Skills</a>
-            <a href="#project" className="text-gray-700 hover:text-gray-900 font-medium">Project</a> {/* Changed href to #project */}
+            <a href="#project" className="text-gray-700 hover:text-gray-900 font-medium">Project</a>
+            <a href="#certifications" className="text-gray-700 hover:text-gray-900 font-medium">Certifications</a>
             <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium">Contact Me</a>
           </nav>
           <button className="bg-gray-900 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-800">
