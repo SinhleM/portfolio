@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -9,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Your Name | Portfolio",
-  description: "Modern portfolio built with Next.js, shadcn/ui, and Framer Motion.",
+  description: "Modern portfolio with fluid scroll animations.",
 };
 
 export default function RootLayout({
@@ -18,18 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

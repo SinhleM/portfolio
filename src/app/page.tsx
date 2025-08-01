@@ -1,22 +1,43 @@
-import Hero from "@/components/Hero";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
+import Hero from "@/components/Hero";
 import LetsConnect from "@/components/LetsConnect";
-// import Certificates from "@/components/Certificates"; // Optional, create if needed
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 
 export default function Home() {
+  // Define background classes for each section
+  const heroBg = "bg-background";
+  const skillsBg = "bg-muted";
+  const projectsBg = "bg-background";
+  const experienceBg = "bg-muted";
+  const connectBg = "bg-background";
+
   return (
     <>
-      <Hero />
-      <div className="container space-y-12 md:space-y-24">
-        {/* You can add a subtle divider here if you like */}
-      </div>
-      <Skills />
-      <Projects />
-      <Experience />
-      {/* <Certificates /> Uncomment if you build this component */}
-      <LetsConnect />
+      {/* Hero section */}
+      <section className={heroBg}>
+        <Hero />
+      </section>
+
+      {/* Skills section */}
+      <section className={skillsBg}>
+        <Skills />
+      </section>
+
+      {/* Projects section */}
+      <section className={projectsBg}>
+        <Projects />
+      </section>
+
+      {/* Experience section */}
+      <section className={experienceBg}>
+        <Experience />
+      </section>
+
+      {/* LetsConnect section */}
+      <section className={connectBg}>
+        <LetsConnect />
+      </section>
     </>
   );
 }

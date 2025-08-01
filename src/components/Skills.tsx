@@ -1,6 +1,6 @@
+// src/components/Skills.tsx
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Server, AppWindow } from "lucide-react";
-import ScrollAnimate from "./ScrollAnimate";
 
 const skillsData = [
   {
@@ -22,23 +22,20 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="container py-24 sm:py-32">
-      <ScrollAnimate>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          My <span className="text-primary">Skills</span>
-        </h2>
-      </ScrollAnimate>
+    // Add 'bg-secondary/50' or another dark color to create the contrast
+    <section id="skills" className="container py-24 sm:py-32 bg-secondary/50">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        My <span className="text-primary">Skills</span>
+      </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {skillsData.map((skill, index) => (
-          <ScrollAnimate key={index} delay={0.2 * (index + 1)}>
-            <Card>
-              <CardHeader className="flex items-center space-x-4">
-                {skill.icon}
-                <CardTitle>{skill.title}</CardTitle>
-              </CardHeader>
-              <CardContent>{skill.description}</CardContent>
-            </Card>
-          </ScrollAnimate>
+          <Card key={index} className="bg-background/50">
+            <CardHeader className="flex items-center space-x-4">
+              {skill.icon}
+              <CardTitle>{skill.title}</CardTitle>
+            </CardHeader>
+            <CardContent>{skill.description}</CardContent>
+          </Card>
         ))}
       </div>
     </section>

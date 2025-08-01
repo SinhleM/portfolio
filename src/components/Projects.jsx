@@ -2,7 +2,6 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import ScrollAnimate from "./ScrollAnimate";
 
 const projectData = [
   {
@@ -24,15 +23,12 @@ const projectData = [
 export default function Projects() {
   return (
     <section id="projects" className="container py-24 sm:py-32">
-      <ScrollAnimate>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
-      </ScrollAnimate>
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        Featured <span className="text-primary">Projects</span>
+      </h2>
       <div className="grid md:grid-cols-2 gap-8">
         {projectData.map((project, index) => (
-          <ScrollAnimate key={index} delay={0.2 * (index + 1)}>
-            <Card>
+            <Card key={index}>
               <CardHeader>
                 <CardTitle>{project.title}</CardTitle>
               </CardHeader>
@@ -47,7 +43,6 @@ export default function Projects() {
                  <Button asChild><Link href={project.liveUrl} target="_blank">Live Site</Link></Button>
               </CardFooter>
             </Card>
-          </ScrollAnimate>
         ))}
       </div>
     </section>
