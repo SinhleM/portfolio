@@ -35,7 +35,7 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           {/* Resume Button */}
-          <Button asChild size="sm" className="hidden md:flex">
+          <Button asChild size="sm" className="hidden md:flex" variant={undefined}>
             <a href="/your_resume.pdf" download="your_resume.pdf" target="_blank" rel="noopener noreferrer">
               <FileDown className="mr-2 h-4 w-4" />
               Resume
@@ -46,7 +46,7 @@ export default function Header() {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className={undefined}>
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
