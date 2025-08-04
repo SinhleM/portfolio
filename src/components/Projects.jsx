@@ -1,8 +1,13 @@
-// src/components/Projects.tsx
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -10,47 +15,55 @@ import Image from "next/image";
 import { Github, Globe } from "lucide-react";
 
 // Placeholder image URL
-const placeholderImage = "/images/project-placeholder.jpg"; // Updated to use a local path
+const placeholderImage = "/images/project-placeholder.jpg";
 
 const projectData = [
   {
     title: "E-commerce Data Pipeline",
-    description: "Built a robust ETL pipeline to ingest, transform, and load e-commerce sales data into a data warehouse, enabling real-time analytics and reporting.",
+    description:
+      "Built a robust ETL pipeline to ingest, transform, and load e-commerce sales data into a data warehouse, enabling real-time analytics and reporting.",
     tags: ["Python", "Apache Airflow", "PostgreSQL", "AWS S3"],
     imageUrl: "/screely-1754130109271.png",
     liveUrl: "#",
-    repoUrl: "#"
+    repoUrl: "#",
   },
   {
     title: "Customer Churn Prediction",
-    description: "Developed a machine learning model to predict customer churn using historical data, providing key insights to the marketing team for targeted campaigns.",
+    description:
+      "Developed a machine learning model to predict customer churn using historical data, providing key insights to the marketing team for targeted campaigns.",
     tags: ["Python", "Scikit-learn", "Pandas", "GCP"],
-    imageUrl:"/download.png",
+    imageUrl: "/download.png",
     liveUrl: "#",
-    repoUrl: "#"
+    repoUrl: "#",
   },
   {
     title: "Financial Data Dashboard",
-    description: "Created an interactive dashboard using Tableau to visualize key financial metrics, allowing stakeholders to monitor performance and make data-driven decisions.",
+    description:
+      "Created an interactive dashboard using Tableau to visualize key financial metrics, allowing stakeholders to monitor performance and make data-driven decisions.",
     tags: ["Tableau", "SQL", "Data Modeling", "Business Intelligence"],
     imageUrl: placeholderImage,
     liveUrl: "#",
-    repoUrl: "#"
+    repoUrl: "#",
   },
   {
     title: "Social Media Sentiment Analysis",
-    description: "Implemented a data pipeline to scrape social media data and perform sentiment analysis, providing a real-time view of brand perception.",
+    description:
+      "Implemented a data pipeline to scrape social media data and perform sentiment analysis, providing a real-time view of brand perception.",
     tags: ["Python", "Apache Spark", "NLP", "Docker"],
     imageUrl: placeholderImage,
     liveUrl: "#",
-    repoUrl: "#"
+    repoUrl: "#",
   },
 ];
 
-// Animation variants for Framer Motion
+// Animation variants
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const containerVariants = {
@@ -64,7 +77,7 @@ const containerVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="container py-24 sm:py-32">
+    <section id="projects" className="container pt-20 pb-16 sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-primary">Projects</span>
@@ -83,16 +96,10 @@ export default function Projects() {
       >
         {projectData.map((project, index) => (
           <motion.div key={index} variants={cardVariants}>
-            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
+            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl ">
               <CardHeader className="p-0">
-                {/*
-                  ACTION REQUIRED:
-                  Please download a high-quality, professional image and save it to your project.
-                  For example, save it as: /public/images/project-placeholder.jpg
-                  The current image path is a placeholder.
-                */}
-                <Image
-                  src={project.imageUrl} // Replace with your image path
+                <Image 
+                  src={project.imageUrl}
                   alt={`Image for ${project.title}`}
                   width={600}
                   height={400}
@@ -116,12 +123,20 @@ export default function Projects() {
               </CardContent>
               <CardFooter className="flex justify-end gap-2 p-6 pt-0">
                 <Button asChild variant="outline">
-                  <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github className="mr-2 h-4 w-4" /> Repo
                   </Link>
                 </Button>
                 <Button asChild>
-                  <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Globe className="mr-2 h-4 w-4" /> Live Site
                   </Link>
                 </Button>
@@ -130,6 +145,7 @@ export default function Projects() {
           </motion.div>
         ))}
       </motion.div>
+      
     </section>
   );
 }

@@ -97,8 +97,11 @@ function SkillCard({ skill, index }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="pt-20 pb-12 bg-secondary">
-      <div className="container mx-auto max-w-7xl px-4">
+    <section
+      id="skills"
+      className="pt-16 sm:pt-20 bg-secondary  px-4 mx-auto max-w-[90%] border-b border-black pb-20"
+    >
+      <div className="container mx-auto max-w-7xl relative">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
