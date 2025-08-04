@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Your Name | Portfolio",
+  title: "Sinhle | Portfolio",
   description: "Modern portfolio with fluid scroll animations.",
 };
 
@@ -18,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
+      <body className="font-sans">
         <Header />
         <main>{children}</main>
         <Footer />

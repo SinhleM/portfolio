@@ -6,17 +6,18 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Globe } from "lucide-react";
 
-// Placeholder image (using a data URI for an SVG to avoid Next.js image configuration issues)
-const placeholderImage = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'><rect width='100%' height='100%' fill='%23E2E8F0'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='30' fill='%231E293B'>Project</text></svg>";
+// Placeholder image URL
+const placeholderImage = "/images/project-placeholder.jpg"; // Updated to use a local path
 
 const projectData = [
   {
     title: "E-commerce Data Pipeline",
     description: "Built a robust ETL pipeline to ingest, transform, and load e-commerce sales data into a data warehouse, enabling real-time analytics and reporting.",
     tags: ["Python", "Apache Airflow", "PostgreSQL", "AWS S3"],
-    imageUrl: placeholderImage,
+    imageUrl: "/screely-1754130109271.png",
     liveUrl: "#",
     repoUrl: "#"
   },
@@ -24,7 +25,7 @@ const projectData = [
     title: "Customer Churn Prediction",
     description: "Developed a machine learning model to predict customer churn using historical data, providing key insights to the marketing team for targeted campaigns.",
     tags: ["Python", "Scikit-learn", "Pandas", "GCP"],
-    imageUrl: placeholderImage,
+    imageUrl:"/download.png",
     liveUrl: "#",
     repoUrl: "#"
   },
@@ -84,8 +85,14 @@ export default function Projects() {
           <motion.div key={index} variants={cardVariants}>
             <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
               <CardHeader className="p-0">
-                <img
-                  src={project.imageUrl}
+                {/*
+                  ACTION REQUIRED:
+                  Please download a high-quality, professional image and save it to your project.
+                  For example, save it as: /public/images/project-placeholder.jpg
+                  The current image path is a placeholder.
+                */}
+                <Image
+                  src={project.imageUrl} // Replace with your image path
                   alt={`Image for ${project.title}`}
                   width={600}
                   height={400}

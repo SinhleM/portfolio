@@ -1,4 +1,3 @@
-// src/components/Skills.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,78 +7,130 @@ import { Database, LineChart, Cloud } from "lucide-react";
 // Updated skills data tailored for a data-focused role
 const skillsData = [
   {
-    icon: <Database className="w-8 h-8 text-primary" />,
+    icon: Database,
     title: "Data Engineering",
     skills: ["Python", "SQL", "Apache Spark", "Airflow", "ETL/ELT", "Data Warehousing"],
   },
   {
-    icon: <LineChart className="w-8 h-8 text-primary" />,
+    icon: LineChart,
     title: "Data Analysis & BI",
     skills: ["Python (Pandas, NumPy)", "Tableau", "Power BI", "Data Modeling", "Statistical Analysis"],
   },
   {
-    icon: <Cloud className="w-8 h-8 text-primary" />,
+    icon: Cloud,
     title: "Cloud & MLOps",
     skills: ["AWS", "GCP", "Docker", "Git/GitHub", "CI/CD", "Machine Learning"],
   },
 ];
 
-// Animation variants for Framer Motion
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
 const containerVariants = {
-  hidden: {},
+  hidden: { opacity: 0 },
   visible: {
-    transition: {
-      staggerChildren: 0.2, // Stagger the animation of each child card
-    },
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
+// Helper component for rendering an individual skill card
+function SkillCard({ skill, index }) {
+  const IconComponent = skill.icon;
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group h-full"
+    >
+      <Card className="h-full bg-card border border-border hover:border-primary transition-all duration-300 shadow-sm hover:shadow-md">
+        <CardHeader className="text-center pb-4">
+          <div className="inline-flex p-3 rounded-full bg-muted border border-border mb-4 mx-auto group-hover:bg-primary/10 transition-colors duration-300">
+            <IconComponent className="w-6 h-6 text-primary" />
+          </div>
+          <CardTitle className="text-lg font-semibold text-card-foreground">
+            {skill.title}
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="pt-0">
+          <div className="space-y-3">
+            {skill.skills.map((skillName, skillIndex) => (
+              <motion.div
+                key={skillIndex}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: skillIndex * 0.05 }}
+                viewport={{ once: true }}
+                className="group/skill"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground group-hover/skill:bg-primary transition-colors duration-200" />
+                  <span className="text-sm text-muted-foreground group-hover/skill:text-foreground transition-colors duration-200">
+                    {skillName}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-border">
+            <div className="text-xs text-muted-foreground text-center">
+              {skill.skills.length} technologies
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
 export default function Skills() {
   return (
-    <section id="skills" className="container py-24 sm:py-32">
-      <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          My <span className="text-primary">Skills</span>
-        </h2>
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-          A summary of my technical expertise, focusing on the core areas of my work.
-        </p>
-      </div>
+    <section
+      id="skills"
+      className="py-24 sm:py-32 bg-secondary"
+    >
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-block px-3 py-1 text-xs font-medium text-secondary-foreground bg-secondary rounded-full border border-border mb-4">
+            Technical Expertise
+          </div>
 
-      <motion.div 
-        className="grid md:grid-cols-3 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }} // Trigger animation when 30% of the component is in view
-      >
-        {skillsData.map((skill, index) => (
-          <motion.div key={index} variants={cardVariants} className="h-full">
-            <Card className="flex flex-col h-full bg-background/50 hover:bg-background/80 transition-all duration-300 shadow-md hover:shadow-xl">
-              <CardHeader className="flex-col items-center text-center space-y-4 pt-6 pb-4">
-                <div className="p-3 rounded-full bg-secondary">
-                  {skill.icon}
-                </div>
-                <CardTitle className="text-xl font-semibold">{skill.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1 text-center text-muted-foreground p-6 pt-0">
-                <ul className="space-y-2">
-                  {skill.skills.map((item, i) => (
-                    <li key={i} className="text-sm">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Skills
+          </h2>
+
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Specialized in building scalable data solutions with modern technologies
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {skillsData.map((skill, index) => (
+            <SkillCard key={skill.title} skill={skill} index={index} />
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
