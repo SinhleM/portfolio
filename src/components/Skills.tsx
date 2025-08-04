@@ -1,10 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Database, LineChart, Cloud } from "lucide-react";
 
-// Updated skills data tailored for a data-focused role
 const skillsData = [
   {
     icon: Database,
@@ -40,7 +44,6 @@ const cardVariants = {
   },
 };
 
-// Helper component for rendering an individual skill card
 function SkillCard({ skill, index }) {
   const IconComponent = skill.icon;
 
@@ -94,13 +97,10 @@ function SkillCard({ skill, index }) {
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="py-24 sm:py-32 bg-secondary"
-    >
-      <div className="container mx-auto px-4">
+    <section id="skills" className="pt-20 pb-12 bg-secondary">
+      <div className="container mx-auto max-w-7xl px-4">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -120,7 +120,7 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
