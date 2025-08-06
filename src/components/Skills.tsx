@@ -99,7 +99,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="pt-16 sm:pt-20 bg-secondary  px-4 mx-auto max-w-[90%] border-b border-black pb-20"
+      className=" sm:pt-20 bg-secondary  px-4 mx-auto max-w-[90%] border-b border-black pb-20"
     >
       <div className="container mx-auto max-w-7xl relative">
         <motion.div

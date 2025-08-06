@@ -19,38 +19,38 @@ const placeholderImage = "/images/project-placeholder.jpg";
 
 const projectData = [
   {
-    title: "E-commerce Data Pipeline",
+    title: "FNB Data Pipeline",
     description:
-      "Built a robust ETL pipeline to ingest, transform, and load e-commerce sales data into a data warehouse, enabling real-time analytics and reporting.",
-    tags: ["Python", "Apache Airflow", "PostgreSQL", "AWS S3"],
-    imageUrl: "/screely-1754130109271.png",
+      "Built a robust ETL pipeline to ingest, transform, and load sythetic transaction data into a data warehouse, enabling real-time analytics and reporting.",
+    tags: ["Python", "PostgreSQL", "Faker", "React"],
+    imageUrl: "/cropped-localhost_5174_(Laptop HiDFI).png",
     liveUrl: "#",
     repoUrl: "#",
   },
   {
-    title: "Customer Churn Prediction",
+    title: "GitHub Activity Dashboard",
     description:
-      "Developed a machine learning model to predict customer churn using historical data, providing key insights to the marketing team for targeted campaigns.",
-    tags: ["Python", "Scikit-learn", "Pandas", "GCP"],
-    imageUrl: "/download.png",
+      "Developed a GitHub dashboard to visulize data and activity, providing key insights to then boost productivity and activity tracking.",
+    tags: ["Python", "FastAPI", "Pandas", "GitHub Actions"],
+    imageUrl: "/cropped-localhost_5173_(1600 X 900).png",
     liveUrl: "#",
     repoUrl: "#",
   },
   {
-    title: "Financial Data Dashboard",
+    title: "TailTrade E-Commerce App",
     description:
-      "Created an interactive dashboard using Tableau to visualize key financial metrics, allowing stakeholders to monitor performance and make data-driven decisions.",
-    tags: ["Tableau", "SQL", "Data Modeling", "Business Intelligence"],
-    imageUrl: placeholderImage,
+      "Created A full-stack ecommerce platform for pet trading and pet supplies, built to support secure listings, real-time messaging, and admin-level moderation",
+    tags: ["SQL", "PHP", "React", "Tailwind CSS"],
+    imageUrl: "/cropped-tailtrade.netlify.app_listing_pet_23(1600 X 900).png",
     liveUrl: "#",
     repoUrl: "#",
   },
   {
-    title: "Social Media Sentiment Analysis",
+    title: "Data Analysis and Visualization",
     description:
       "Implemented a data pipeline to scrape social media data and perform sentiment analysis, providing a real-time view of brand perception.",
-    tags: ["Python", "Apache Spark", "NLP", "Docker"],
-    imageUrl: placeholderImage,
+    tags: ["Python", "Power BI", "Data Modeling", "Business Intelligence"],
+    imageUrl: "/cropped-localhost_3000_(1280 x 720).png",
     liveUrl: "#",
     repoUrl: "#",
   },
@@ -77,7 +77,7 @@ const containerVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="container pt-20 pb-16 sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black">
+    <section id="projects" className="container pt-20 pb-16 sm:pt-24 sm:pb-32 mx-auto max-w-5xl">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-primary">Projects</span>
@@ -88,7 +88,7 @@ export default function Projects() {
       </div>
 
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-2 gap-8"
+        className="grid md:grid-cols-2 lg:grid-cols-2 gap-6"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -96,33 +96,35 @@ export default function Projects() {
       >
         {projectData.map((project, index) => (
           <motion.div key={index} variants={cardVariants}>
-            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl ">
+            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
               <CardHeader className="p-0">
-                <Image 
-                  src={project.imageUrl}
-                  alt={`Image for ${project.title}`}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover"
-                />
+                <div className="aspect-video w-full">
+                  <Image 
+                    src={project.imageUrl}
+                    alt={`Image for ${project.title}`}
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 p-6">
-                <CardTitle className="text-2xl font-semibold mb-2">
+                <CardTitle className="text-xl font-semibold mb-2">
                   {project.title}
                 </CardTitle>
-                <p className="text-muted-foreground mb-4 flex-1">
+                <p className="text-muted-foreground text-sm mb-4 flex-1">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-1 mt-auto">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">
+                    <Badge key={tag} variant="secondary" className="text-xs">
                       {tag}
                     </Badge>
                   ))}
                 </div>
               </CardContent>
               <CardFooter className="flex justify-end gap-2 p-6 pt-0">
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" size="sm">
                   <Link
                     href={project.repoUrl}
                     target="_blank"
@@ -131,7 +133,7 @@ export default function Projects() {
                     <Github className="mr-2 h-4 w-4" /> Repo
                   </Link>
                 </Button>
-                <Button asChild>
+                <Button asChild size="sm">
                   <Link
                     href={project.liveUrl}
                     target="_blank"
@@ -145,7 +147,6 @@ export default function Projects() {
           </motion.div>
         ))}
       </motion.div>
-      
     </section>
   );
 }
