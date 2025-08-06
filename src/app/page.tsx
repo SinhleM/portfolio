@@ -37,11 +37,12 @@ export default function Home() {
         <Certifications />
       </section>
 
-      {/* Experience section */}
+      {/* Experience section 
       <section className={experienceBg}>
         <Experience />
       </section>
-
+      */}
+      
       {/* LetsConnect section */}
       <section className={connectBg}>
         <LetsConnect />
