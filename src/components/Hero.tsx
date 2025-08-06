@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
+const handleScroll = (e) => {
+  e.preventDefault();
+  const href = e.currentTarget.href;
+  const targetId = href.replace(/.*#/, "");
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    window.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: "smooth",
+    });
+  }
+};
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white pt-8 pb-16 md:pt-10 md:pb-16 text-black">
@@ -44,7 +57,9 @@ export default function Hero() {
                 size="lg"
                 className="w-full md:w-auto bg-black text-white hover:bg-gray-800"
               >
-                <Link href="#connect">Let's Connect</Link>
+                <Link href="#connect" onClick={handleScroll}>
+                  Let's Connect
+                </Link>
               </Button>
             </motion.div>
           </div>
