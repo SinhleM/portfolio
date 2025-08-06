@@ -77,12 +77,12 @@ const containerVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="container pt-20 pb-16 sm:pt-24 sm:pb-32 mx-auto max-w-5xl">
+    <section id="projects" className="container pt-20  sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black ">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-primary">Projects</span>
         </h2>
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"> 
           Showcasing my work in data engineering and analytics.
         </p>
       </div>

@@ -6,27 +6,32 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const certificationsData = [
   {
-    title: "Google Data Analytics Professional Certificate",
+    title: "IBM Introduction to Data Engineering",
     issuer: "Coursera",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/certificate/4UKYPAIQ3TMF",
+    logo: "/ibm-svgrepo-com.svg",
   },
   {
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    link: "#",
-  },
-  {
-    title: "IBM Data Analyst Professional Certificate",
+    title: "AWS  Cloud Practitioner Essentials",
     issuer: "Coursera",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/certificate/MM7JAA0ALQAQ",
+    logo: "/aws-svgrepo-com.svg",
   },
   {
-    title: "Python for Everybody Specialization",
-    issuer: "University of Michigan (Coursera)",
-    link: "#",
+    title: "IBM Python for Data Science, AI & Development",
+    issuer: "Coursera",
+    link: "https://www.coursera.org/account/accomplishments/certificate/4R3SL16H7VLP",
+    logo: "/ibm-svgrepo-com.svg",
+  },
+  {
+    title: "Meta Programming with JavaScript",
+    issuer: "Coursera",
+    link: "https://www.coursera.org/account/accomplishments/certificate/5IBC3JQJY023",
+    logo: "/meta-svgrepo-com.svg",
   },
 ];
 
@@ -47,7 +52,7 @@ const containerVariants = {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="container py-24 sm:py-32">
+    <section id="certifications" className="container py-24 sm:py-32 mx-auto max-w-[90%] border-b border-black pb-20">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           My <span className="text-primary">Certifications</span>
@@ -67,11 +72,24 @@ export default function Certifications() {
         {certificationsData.map((cert, index) => (
           <motion.div key={index} variants={cardVariants} className="h-full">
             <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl">
-              <CardHeader className="flex-1">
-                <CardTitle>{cert.title}</CardTitle>
-                <div className="mt-2">
-                  <Badge variant="secondary">{cert.issuer}</Badge>
+              <CardHeader className="flex-1 flex flex-row items-start justify-between">
+                <div>
+                  <CardTitle>{cert.title}</CardTitle>
+                  <div className="mt-2">
+                    <Badge variant="secondary">{cert.issuer}</Badge>
+                  </div>
                 </div>
+                {cert.logo && (
+                  <div className="flex-shrink-0 w-12 h-12 ml-4">
+                    <Image
+                      src={cert.logo}
+                      alt={`${cert.issuer} logo`}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
               </CardHeader>
               <CardContent>
                 <Link
