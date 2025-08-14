@@ -9,6 +9,7 @@ const navLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#connect", label: "Connect" },
+  { href: "#certifications", label: "Certifications" },
 ];
 
 const handleScroll = (e) => {

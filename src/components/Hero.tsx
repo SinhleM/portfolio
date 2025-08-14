@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const handleScroll = (e) => {
   e.preventDefault();
@@ -47,20 +48,28 @@ export default function Hero() {
               that deliver meaningful insights.
             </motion.p>
 
+            {/* Social Icons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+              className="flex justify-center lg:justify-start gap-4"
             >
-              <Button
-                asChild
-                size="lg"
-                className="w-full md:w-auto bg-black text-white hover:bg-gray-800"
-              >
-                <Link href="#connect" onClick={handleScroll}>
-                  Let's Connect
-                </Link>
-              </Button>
+              <Link href="https://github.com/SinhleM" passHref>
+                <Button variant="ghost" size="icon" aria-label="GitHub" className="cursor-pointer">
+                  <Github className="h-6 w-6" />
+                </Button>
+              </Link>
+              <Link href="https://www.linkedin.com/in/sinhle-mkhabela-0b6812345/" passHref>
+                <Button variant="ghost" size="icon" aria-label="LinkedIn" className="cursor-pointer">
+                  <Linkedin className="h-6 w-6" />
+                </Button>
+              </Link>
+              <Link href="mailto:sinhlemkhabela01@gmail.com" passHref>
+                <Button variant="ghost" size="icon" aria-label="Email" className="cursor-pointer">
+                  <Mail className="h-6 w-6" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
