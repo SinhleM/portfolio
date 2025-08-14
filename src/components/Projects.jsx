@@ -23,7 +23,7 @@ const projectData = [
     description:
       "Built a robust ETL pipeline to ingest, transform, and load sythetic transaction data into a data warehouse, enabling real-time analytics and reporting.",
     tags: ["Python", "PostgreSQL", "Faker", "React"],
-    imageUrl: "/cropped-localhost_5174_(Laptop HiDFI).png",
+    imageUrl: "/fnb powerbi(1).jpg",
     liveUrl: "#",
     repoUrl: "#",
   },
@@ -48,9 +48,9 @@ const projectData = [
   {
     title: "Data Analysis and Visualization",
     description:
-      "Implemented a data pipeline to scrape social media data and perform sentiment analysis, providing a real-time view of brand perception.",
+      "Implemented a data pipeline to mimic retail data and perform sentiment analysis, providing a real-time view of retail perception.",
     tags: ["Python", "Power BI", "Data Modeling", "Business Intelligence"],
-    imageUrl: "/cropped-localhost_3000_(1280 x 720).png",
+    imageUrl: "/powerbi.png",
     liveUrl: "#",
     repoUrl: "#",
   },
