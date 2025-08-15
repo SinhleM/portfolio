@@ -15,14 +15,16 @@ export default function LetsConnect() {
     e.preventDefault();
     const subject = `Message from ${name}`;
     const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    const mailtoLink = `mailto:sinhlemkhabela01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:sinhlemkhabela01@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
 
   return (
     <section id="connect" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-        Let's <span className="text-primary">Connect</span>
+        Let&#39;s <span className="text-primary">Connect</span>
       </h2>
       <p className="text-center text-muted-foreground mb-12">
         Have a project in mind or just want to say hi? Fill out the form below.
@@ -59,7 +61,9 @@ export default function LetsConnect() {
             onChange={(e) => setMessage(e.target.value)}
           />
         </div>
-        <Button type="submit" className="w-full">Send Message</Button>
+        <Button type="submit" className="w-full">
+          Send Message
+        </Button>
       </form>
     </section>
   );
