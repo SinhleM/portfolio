@@ -43,7 +43,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
               className="text-lg md:text-xl text-zinc-700 max-w-lg"
             >
-              Final year Computer Science student passionate about all things data —
+              Final year Computer Science student passionate about all things data,
               from analytics and automation to building scalable data pipelines
               that deliver meaningful insights.
             </motion.p>

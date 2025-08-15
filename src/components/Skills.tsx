@@ -13,17 +13,17 @@ const skillsData = [
   {
     icon: Database,
     title: "Data Engineering",
-    skills: ["Python", "SQL", "Apache Spark", "Airflow", "ETL/ELT", "Data Warehousing"],
+    skills: ["Python", "SQL", "ETL/ELT", "Data Pipelines", "Data Warehousing"],
   },
   {
     icon: LineChart,
     title: "Data Analysis & BI",
-    skills: ["Python (Pandas, NumPy)", "Tableau", "Power BI", "Data Modeling", "Statistical Analysis"],
+    skills: ["Python (Pandas, NumPy)", "Power BI", "Data Modeling", "Statistical Analysis"],
   },
   {
     icon: Cloud,
     title: "Cloud & MLOps",
-    skills: ["AWS", "GCP", "Docker", "Git/GitHub", "CI/CD", "Machine Learning"],
+    skills: ["AWS", "Docker", "Git/GitHub", "Big Data", "Machine Learning"],
   },
 ];
 

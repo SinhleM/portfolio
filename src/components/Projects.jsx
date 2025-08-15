@@ -24,8 +24,8 @@ const projectData = [
       "Built a robust ETL pipeline to ingest, transform, and load sythetic transaction data into a data warehouse, enabling real-time analytics and reporting.",
     tags: ["Python", "PostgreSQL", "Faker", "React"],
     imageUrl: "/fnb powerbi(1).jpg",
-    liveUrl: "#",
-    repoUrl: "#",
+    liveUrl: "https://github.com/SinhleM/fnb-fraud-detection",
+    repoUrl: "https://github.com/SinhleM/fnb-fraud-detection",
   },
   {
     title: "GitHub Activity Dashboard",
@@ -33,8 +33,8 @@ const projectData = [
       "Developed a GitHub dashboard to visulize data and activity, providing key insights to then boost productivity and activity tracking.",
     tags: ["Python", "FastAPI", "Pandas", "GitHub Actions"],
     imageUrl: "/cropped-localhost_5173_(1600 X 900).png",
-    liveUrl: "#",
-    repoUrl: "#",
+    liveUrl: "https://github.com/SinhleM/github-activity-tracker",
+    repoUrl: "https://github.com/SinhleM/github-activity-tracker",
   },
   {
     title: "TailTrade E-Commerce App",
@@ -42,17 +42,17 @@ const projectData = [
       "Created A full-stack ecommerce platform for pet trading and pet supplies, built to support secure listings, real-time messaging, and admin-level moderation",
     tags: ["SQL", "PHP", "React", "Tailwind CSS"],
     imageUrl: "/cropped-tailtrade.netlify.app_listing_pet_23(1600 X 900).png",
-    liveUrl: "#",
-    repoUrl: "#",
+    liveUrl: "https://tailtrade.netlify.app",
+    repoUrl: "https://github.com/SinhleM/tailtrade-app",
   },
   {
-    title: "Data Analysis and Visualization",
+    title: "Retail Inventory Data Warehouse",
     description:
-      "Implemented a data pipeline to mimic retail data and perform sentiment analysis, providing a real-time view of retail perception.",
+      "Implemented a data pipeline to mimic retail data and perform sentiment analysis, providing a view of retail perception with Power BI visulisation.",
     tags: ["Python", "Power BI", "Data Modeling", "Business Intelligence"],
     imageUrl: "/powerbi.png",
-    liveUrl: "#",
-    repoUrl: "#",
+    liveUrl: "https://github.com/SinhleM/retail-inventory-optimisation",
+    repoUrl: "https://github.com/SinhleM/retail-inventory-optimisation",
   },
 ];
 
@@ -77,7 +77,7 @@ const containerVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="container pt-20  sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black ">
+    <section id="projects" className="container pt-20 sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black ">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-primary">Projects</span>
@@ -92,7 +92,7 @@ export default function Projects() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
       >
         {projectData.map((project, index) => (
           <motion.div key={index} variants={cardVariants}>

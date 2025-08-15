@@ -4,8 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Sinhle | Portfolio",
-  description: "Modern portfolio with fluid scroll animations.",
+  title: "Sinhle Mkhabela | Portfolio",
+  description: "Sinhle Mkhabela's Portfolio - Showcasing Skills, Projects, and Certifications",
 };
 
 export default function RootLayout({
