@@ -7,6 +7,7 @@ import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { easeOut } from "framer-motion"; // ✅ import easing
 
 const certificationsData = [
   {
@@ -35,10 +36,14 @@ const certificationsData = [
   },
 ];
 
-// Animation variants for Framer Motion
+// ✅ Corrected animation variants
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: easeOut } // use easing function, not string
+  },
 };
 
 const containerVariants = {
@@ -52,7 +57,10 @@ const containerVariants = {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="container py-24 sm:py-32 mx-auto max-w-[90%] border-b border-black pb-20">
+    <section
+      id="certifications"
+      className="container py-24 sm:py-32 mx-auto max-w-[90%] border-b border-black pb-20"
+    >
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           My <span className="text-primary">Certifications</span>
