@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion"; // ✅ import easing function
 import {
   Card,
   CardContent,
@@ -18,7 +18,12 @@ const skillsData = [
   {
     icon: LineChart,
     title: "Data Analysis & BI",
-    skills: ["Python (Pandas, NumPy)", "Power BI", "Data Modeling", "Statistical Analysis"],
+    skills: [
+      "Python (Pandas, NumPy)",
+      "Power BI",
+      "Data Modeling",
+      "Statistical Analysis",
+    ],
   },
   {
     icon: Cloud,
@@ -40,7 +45,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: easeOut }, // ✅ fixed
   },
 };
 
@@ -50,7 +55,7 @@ function SkillCard({ skill, index }) {
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: easeOut } }} // ✅ also fixed here
       className="group h-full"
     >
       <Card className="h-full bg-card border border-border hover:border-primary transition-all duration-300 shadow-sm hover:shadow-md">
@@ -70,7 +75,7 @@ function SkillCard({ skill, index }) {
                 key={skillIndex}
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: skillIndex * 0.05 }}
+                transition={{ delay: skillIndex * 0.05, ease: easeOut }} // ✅ fixed
                 viewport={{ once: true }}
                 className="group/skill"
               >
@@ -99,7 +104,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className=" sm:pt-20 bg-secondary  px-4 mx-auto max-w-[90%] border-b border-black pb-20"
+      className="sm:pt-20 bg-secondary px-4 mx-auto max-w-[90%] border-b border-black pb-20"
     >
       <div className="container mx-auto max-w-7xl relative">
         <motion.div
@@ -107,7 +112,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: easeOut }} // ✅ fixed
         >
           <div className="inline-block px-3 py-1 text-xs font-medium text-secondary-foreground bg-secondary rounded-full border border-border mb-4">
             Technical Expertise
@@ -118,7 +123,8 @@ export default function Skills() {
           </h2>
 
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Specialized in building scalable data solutions with modern technologies
+            Specialized in building scalable data solutions with modern
+            technologies
           </p>
         </motion.div>
 

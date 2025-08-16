@@ -1,13 +1,11 @@
-// src/components/Certifications.tsx
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { easeOut } from "framer-motion"; // ✅ import easing
 
 const certificationsData = [
   {
@@ -36,13 +34,13 @@ const certificationsData = [
   },
 ];
 
-// ✅ Corrected animation variants
+// Animation variants for Framer Motion
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: easeOut } // use easing function, not string
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -82,9 +80,11 @@ export default function Certifications() {
             <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl">
               <CardHeader className="flex-1 flex flex-row items-start justify-between">
                 <div>
-                  <CardTitle>{cert.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold">
+                    {cert.title}
+                  </CardTitle>
                   <div className="mt-2">
-                    <Badge variant="secondary">{cert.issuer}</Badge>
+                    <Badge variant="secondary" className={undefined}>{cert.issuer}</Badge>
                   </div>
                 </div>
                 {cert.logo && (
@@ -99,7 +99,7 @@ export default function Certifications() {
                   </div>
                 )}
               </CardHeader>
-              <CardContent>
+              <CardContent className="">
                 <Link
                   href={cert.link}
                   target="_blank"
