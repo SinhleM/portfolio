@@ -19,7 +19,7 @@ const placeholderImage = "/images/project-placeholder.jpg";
 
 const projectData = [
   {
-    title: "FNB Data Pipeline",
+    title: "Fraud Postgre Data Pipeline",
     description:
       "Built a robust ETL pipeline to ingest, transform, and load sythetic transaction data into a data warehouse, enabling real-time analytics and reporting.",
     tags: ["Python", "PostgreSQL", "Faker", "React"],
@@ -37,11 +37,20 @@ const projectData = [
     repoUrl: "https://github.com/SinhleM/github-activity-tracker",
   },
   {
-    title: "TailTrade E-Commerce App",
+    title: "Fraud Detection Streaming Pipeline",
     description:
-      "Created A full-stack ecommerce platform for pet trading and pet supplies, built to support secure listings, real-time messaging, and admin-level moderation",
-    tags: ["SQL", "PHP", "React", "Tailwind CSS"],
-    imageUrl: "/cropped-tailtrade.netlify.app_listing_pet_23(1600 X 900).png",
+      "End-to-end real-time streaming pipeline using Kafka, Spark Structured Streaming, and Medallion architecture with live fraud monitoring.",
+        tags: [
+      "Apache Kafka",
+      "Apache Spark (Structured Streaming)",
+      "Docker",
+      "Medallion Architecture",
+      "Streamlit",
+      "Python",
+      "Stateful Processing",
+      "Real-Time Data Pipelines"
+      ],
+    imageUrl: "/Screenshot 2026-02-26 112539.png",
     liveUrl: "https://tailtrade.netlify.app",
     repoUrl: "https://github.com/SinhleM/tailtrade-app",
   },
