@@ -14,7 +14,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Github, Globe } from "lucide-react";
 
-// Placeholder image URL
 const placeholderImage = "/images/project-placeholder.jpg";
 
 const projectData = [
@@ -40,7 +39,7 @@ const projectData = [
     title: "Fraud Detection Streaming Pipeline",
     description:
       "End-to-end real-time streaming pipeline using Kafka, Spark Structured Streaming, and Medallion architecture with live fraud monitoring.",
-        tags: [
+    tags: [
       "Apache Kafka",
       "Apache Spark (Structured Streaming)",
       "Docker",
@@ -48,8 +47,8 @@ const projectData = [
       "Streamlit",
       "Python",
       "Stateful Processing",
-      "Real-Time Data Pipelines"
-      ],
+      "Real-Time Data Pipelines",
+    ],
     imageUrl: "/Screenshot 2026-02-26 112539.png",
     liveUrl: "https://tailtrade.netlify.app",
     repoUrl: "https://github.com/SinhleM/tailtrade-app",
@@ -65,7 +64,6 @@ const projectData = [
   },
 ];
 
-// Animation variants
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -86,12 +84,12 @@ const containerVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="container pt-20 sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black ">
+    <section id="projects" className="container pt-20 sm:pt-24 sm:pb-32 mx-auto max-w-[90%] border-b border-black">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Featured <span className="text-primary">Projects</span>
         </h2>
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"> 
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Showcasing my work in data engineering and analytics.
         </p>
       </div>
@@ -106,9 +104,9 @@ export default function Projects() {
         {projectData.map((project, index) => (
           <motion.div key={index} variants={cardVariants}>
             <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
-              <CardHeader className="p-0">
+              {/* <CardHeader className="p-0">
                 <div className="aspect-video w-full">
-                  <Image 
+                  <Image
                     src={project.imageUrl}
                     alt={`Image for ${project.title}`}
                     width={600}
@@ -116,7 +114,7 @@ export default function Projects() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </CardHeader>
+              </CardHeader> */}
               <CardContent className="flex flex-col flex-1 p-6">
                 <CardTitle className="text-xl font-semibold mb-2">
                   {project.title}
@@ -134,20 +132,12 @@ export default function Projects() {
               </CardContent>
               <CardFooter className="flex justify-end gap-2 p-6 pt-0">
                 <Button asChild variant="outline" size="sm">
-                  <Link
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4" /> Repo
                   </Link>
                 </Button>
                 <Button asChild size="sm">
-                  <Link
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                     <Globe className="mr-2 h-4 w-4" /> Live Site
                   </Link>
                 </Button>
