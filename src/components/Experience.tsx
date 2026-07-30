@@ -1,57 +1,63 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SectionHeading from "./SectionHeading";
 
 const experienceData = [
   {
     value: "item-1",
-    company: "Tech Company Inc.",
-    role: "Software Engineer",
-    period: "Jan 2024 - Present",
+    company: "Sorae",
+    role: "Founder & Engineer",
+    period: "Feb 2026 - Present",
     description:
-      "Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      "Designed and built a financial intelligence platform end to end, from the parsing engine through the REST API to the dashboard. It reads bank statements from South Africa's 5 major banks and returns a full NCR-aligned affordability report in under 3 seconds at 95% parsing accuracy, with a risk pipeline that surfaces 15+ underwriting signals and an AI decision layer that explains them in plain English. Owned the full SDLC, including POPIA-compliant data handling.",
   },
   {
     value: "item-2",
-    company: "Startup Co.",
-    role: "Junior Developer",
-    period: "Jun 2022 - Dec 2023",
+    company: "Omnia Truck and Trailer",
+    role: "Full Stack Developer (Client Project)",
+    period: "Jul 2025 - Nov 2025",
     description:
-      "Assisted in the development of a new SaaS platform. Wrote clean, maintainable code and participated in code reviews.",
+      "Worked in an Agile team of 5 to ship a production platform that digitised client data capture and quotation workflows across onboarding and administration, cutting manual effort for staff. Engineered the MySQL/PHP backend and integrated an AI chatbot grounded on FAQ context to reduce repetitive manual responses.",
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        Work <span className="text-primary">Experience</span>
-      </h2>
-      <Accordion
-        type="single"
-        collapsible
-        className="w-full md:w-3/4 mx-auto"
-      >
+    <section id="experience" className="container mx-auto max-w-[90%] py-20">
+      <SectionHeading
+        title="Work Experience"
+        subtitle="Where I've shipped, and what I owned."
+        from="right"
+      />
+
+      <Accordion type="single" collapsible className="w-full border-t border-border">
         {experienceData.map((exp) => (
           <AccordionItem
             key={exp.value}
             value={exp.value}
-            className="bg-background/50 px-4 rounded-lg mb-2"
+            className="border-b border-border"
           >
-            <AccordionTrigger className="hover:no-underline">
-              <div className="flex justify-between w-full pr-4 text-left">
-                <span className="font-bold">
-                  {exp.role} @ {exp.company}
+            <AccordionTrigger className="hover:no-underline py-6 group">
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between w-full pr-4 text-left gap-1">
+                <span className="text-lg md:text-xl font-bold">
+                  {exp.role}
+                  <span className="text-muted-foreground font-normal">
+                    {" "}
+                    @ {exp.company}
+                  </span>
                 </span>
-                <span className="text-muted-foreground hidden sm:block">
+                <span className="text-sm font-mono text-muted-foreground shrink-0">
                   {exp.period}
                 </span>
               </div>
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent className="text-muted-foreground leading-relaxed max-w-3xl pb-6">
               {exp.description}
             </AccordionContent>
           </AccordionItem>
