@@ -144,7 +144,7 @@ export const projects: Project[] = [
       "Docker",
       "Streamlit",
     ],
-    repoUrl: "https://github.com/SinhleM/fraud-detection-pipeline",
+    repoUrl: "https://github.com/SinhleM/streaming-fraud-detection-lakehouse",
     imageUrl: "/Screenshot 2026-02-26 112539.png",
   },
   {

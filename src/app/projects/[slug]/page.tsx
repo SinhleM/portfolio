@@ -19,9 +19,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+  const title = `${project.title} — Sinhle Mkhabela`;
   return {
-    title: `${project.title} — Sinhle Mkhabela`,
+    title,
     description: project.tagline,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      type: "article",
+      url: `/projects/${project.slug}`,
+      title,
+      description: project.tagline,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.tagline,
+    },
   };
 }
 
