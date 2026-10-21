@@ -102,24 +102,6 @@ function TopBar() {
 }
 
 /* ---------- hero ---------- */
-function RotatingRole() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % profile.roles.length), 2600);
-    return () => clearInterval(t);
-  }, []);
-  return (
-    <span className="relative inline-grid overflow-hidden align-bottom">
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.span key={i} initial={{ y: "100%", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "-100%", opacity: 0 }} transition={spring}
-          className="whitespace-nowrap font-semibold text-[var(--fg)]">
-          {profile.roles[i]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
-
 const socials = [
   { label: "LinkedIn", href: profile.links.linkedin, Icon: Linkedin, tip: "Connect on LinkedIn" },
   { label: "GitHub", href: profile.links.github, Icon: Github, tip: "See my code" },
@@ -144,7 +126,7 @@ function Hero() {
         </div>
         <p className="up mt-7 text-lg leading-[2.3rem] tracking-wide text-[var(--muted)] sm:text-xl" style={{ animationDelay: ".35s" }}>
           <Sparkles size={16} className="mr-1 inline text-violet-500" />
-          Currently an <RotatingRole /> building{" "}
+          Currently an <span className="font-semibold text-[var(--fg)]">AI Engineer</span> building{" "}
           <a href="https://sorae.co.za" target="_blank" rel="noreferrer" className="shine-btn">Sorae <ArrowUpRight size={15} /></a>{" "}
           — AI-powered bank statement intelligence for South African lenders.
         </p>
