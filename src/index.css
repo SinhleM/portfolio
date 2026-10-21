@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+  --font-hand: "Caveat", cursive;
+}
+
+:root {
+  --bg: #ffffff;
+  --fg: #3f3f46;
+  --muted: #8e8e93;
+  --line: #e4e4e7;
+  --soft: #f4f4f5;
+  --ink: #3f3f46;
+  --screen: #fde7a8;
+  --shirt: #bfdbfe;
+  --ripple: rgba(197, 197, 197, 0.07);
+  --frame: #e4e4e7;
+  --label: #8a8a3c;
+}
+
+html { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: #8b5cf6; color: #fff; }
+
+
+/* side rails that fade out downwards, like the original */
+.frame {
+  border-inline: 1px solid transparent;
+  border-image: linear-gradient(to bottom, var(--frame), color-mix(in srgb, var(--frame) 35%, transparent)) 1;
+}
+.banner {
+  background-color: var(--soft);
+  background-image: radial-gradient(color-mix(in srgb, var(--muted) 35%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+.banner::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 1px;
+  background: linear-gradient(to right, var(--frame), transparent, var(--frame));
+}
+
+/* rippling circles behind the page (original: ripple keyframes, scale 1 -> 4) */
+.ripples { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.ripples span {
+  position: absolute; top: 50%; left: 50%; width: 22rem; height: 22rem; border-radius: 9999px;
+  background: var(--ripple); transform: translate(-50%, -50%) scale(1);
+  animation: ripple 9s cubic-bezier(.2,.6,.4,1) infinite;
+}
+.ripples span:nth-child(2) { animation-delay: 3s; }
+.ripples span:nth-child(3) { animation-delay: 6s; }
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(.6); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
+/* hero entrance (original: moveUp .9s) */
+.up { opacity: 0; animation: moveUp .9s cubic-bezier(.22,1,.36,1) forwards; }
+@keyframes moveUp { from { opacity: 0; transform: translateY(40%); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+[data-reveal].in { opacity: 1; transform: none; }
+.chip.stagger { transform: translateY(8px); transition-duration: .5s; }
+
+/* mountain line drawing */
+.draw { stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+.in .draw { animation: draw 2.2s cubic-bezier(.65,0,.35,1) .2s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* raised keyboard-key buttons */
+.key {
+  display: inline-flex; align-items: center; gap: .45rem; height: 2rem; padding: 0 .85rem;
+  border-radius: .55rem; font-size: .8rem; font-weight: 700; cursor: pointer;
+  background: linear-gradient(#fafafa, #e4e4e7); color: #18181b;
+  border: 1px solid #a1a1aa; box-shadow: 0 2px 0 #71717a, 0 4px 10px -4px rgba(0,0,0,.25);
+  transition: transform .1s, box-shadow .1s, border-color .2s;
+}
+.key:hover { border-color: #52525b; }
+.key:active { transform: translateY(2px); box-shadow: 0 0 0 #71717a; }
+
+/* animated gradient-border button inside the hero sentence */
+.shine-btn {
+  position: relative; display: inline-flex; align-items: center; gap: .25rem; padding: .1rem .7rem;
+  border-radius: .45rem; color: var(--fg); font-weight: 600; white-space: nowrap;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(110deg, #a1a1aa, #8b5cf6, #f97316, #a1a1aa) border-box;
+  background-size: 100% 100%, 300% 100%;
+  border: 1.5px solid transparent; animation: shine 4s linear infinite;
+  transition: transform .2s;
+}
+.shine-btn:hover { transform: translateY(-1px); }
+@keyframes shine { to { background-position: 0 0, 300% 0; } }
+
+.card {
+  border: 1px solid var(--line); background: var(--bg); border-radius: .9rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px -16px rgba(0,0,0,.18);
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .6rem;
+  font-size: .75rem; font-weight: 600; border-radius: .4rem;
+  border: 1px solid var(--line); background: var(--soft);
+  transition: transform .2s, border-color .2s, opacity .5s;
+}
+.label { display: flex; align-items: center; font-size: .78rem; font-weight: 500; color: var(--label); opacity: .85; }
+.title { font-size: 1.6rem; font-weight: 800; letter-spacing: -.01em; }
+
+.navbtn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 9999px;
+  background: rgba(255,255,255,.9); color: #3f3f46; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  transition: transform .2s, background .2s;
+}
+.navbtn:hover { transform: translateY(-50%) scale(1.08); background: #fff; }
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* github levels */
+.gh.l0 { background: var(--soft); outline: 1px solid var(--line); outline-offset: -1px; }
+.gh.l1 { background: #9be9a8; } .gh.l2 { background: #40c463; } .gh.l3 { background: #30a14e; } .gh.l4 { background: #216e39; }
+
+.bigname {
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--muted) 70%, transparent), transparent 85%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .up, [data-reveal], .chip.stagger { animation: none; opacity: 1; transform: none; filter: none; transition: none; }
+  .ripples span, .shine-btn, .blink { animation: none; }
+  .draw { stroke-dashoffset: 0; }
+}
+
+/* ---------- career on the mountains ---------- */
+.career-card {
+  position: absolute; z-index: 2; white-space: nowrap; cursor: pointer;
+  padding: .4rem .65rem; border-radius: .4rem; background: var(--bg);
+  box-shadow: 0 4px 14px -6px rgba(0,0,0,.18); opacity: .5;
+  transition: top .7s cubic-bezier(.22,1,.36,1), opacity .4s, box-shadow .4s, padding .3s;
+}
+.career-card:hover { opacity: .85; }
+.career-card.on { z-index: 3; opacity: 1; padding: .7rem .8rem; box-shadow: 0 10px 30px -8px rgba(0,0,0,.22); }
+.career-line {
+  position: absolute; z-index: 1; width: 1.5px; transform: translateX(-50%);
+  background: #d4d4d8; transition: top .7s cubic-bezier(.22,1,.36,1), height .7s cubic-bezier(.22,1,.36,1), background .4s;
+}
+.career-line.on { background: #f97316; box-shadow: 0 0 8px #f9731688; }
+.pop { animation: pop .45s cubic-bezier(.22,1,.36,1) both; }
+@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* glassy, see-through header */
+.glass {
+  background: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,.36));
+  -webkit-backdrop-filter: blur(28px) saturate(210%) brightness(1.05);
+  backdrop-filter: blur(28px) saturate(210%) brightness(1.05);
+  border-bottom: 1px solid #e4e4e7;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+.glass.scrolled {
+  background: linear-gradient(to bottom, rgba(255,255,255,.6), rgba(255,255,255,.45));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 24px -12px rgba(0,0,0,.12);
+}
