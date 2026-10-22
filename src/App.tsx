@@ -49,6 +49,11 @@ function Heading({ label, title, icon, right }: { label: string; title: string; 
   );
 }
 
+/** Small hand-drawn illustration beside a section title */
+function Art({ src }: { src: string }) {
+  return <img src={`/art/${src}.png`} alt="" loading="lazy" className="art -mb-2 h-20 w-auto select-none sm:h-24" draggable={false} />;
+}
+
 function Block({ id, children }: { id?: string; children: ReactNode }) {
   return <section id={id} data-reveal className="frame px-3 py-12 sm:px-5">{children}</section>;
 }
@@ -114,7 +119,7 @@ function Hero() {
     <section id="top" className="pt-14">
       <div className="frame banner relative flex h-60 items-center justify-center overflow-hidden">
         {/* TEMP: your image. Swap back to <DeskArt className="up h-36 sm:h-44" /> to compare */}
-        <img src="/hero.png" alt="" className="up h-48 sm:h-56 [mask-image:linear-gradient(to_bottom,black_80%,transparent)]" />
+        <img src="/art/desk.png" alt="" className="up h-48 sm:h-52" />
       </div>
       <div className="frame px-3 pb-8 pt-7 sm:px-5">
         <h1 className="up text-4xl font-extrabold tracking-tight sm:text-[2.75rem]" style={{ animationDelay: ".05s" }}>{profile.name}</h1>
@@ -232,7 +237,7 @@ function Career() {
 function Skills() {
   return (
     <Block>
-      <Heading label="Core" title="Skills" icon={<Sparkles size={12} />} />
+      <Heading label="Core" title="Skills" icon={<Sparkles size={12} />} right={<Art src="laptop" />} />
       <div className="mt-6 space-y-5">
         {Object.entries(skills).map(([group, list]) => (
           <div key={group}>
@@ -290,7 +295,7 @@ function Projects() {
   const go = (d: number) => set(([v]) => [(v + d + projects.length) % projects.length, d]);
   return (
     <Block id="projects">
-      <Heading label="Featured" title="Projects" icon={<Rocket size={12} />} />
+      <Heading label="Featured" title="Projects" icon={<Rocket size={12} />} right={<Art src="rocket" />} />
       <div className={`relative mt-6 aspect-[4/4.2] overflow-hidden rounded-2xl p-5 sm:aspect-[16/11] sm:p-12 ${gradients[i % gradients.length]}`}>
                 <AnimatePresence mode="popLayout" custom={dir} initial={false}>
           <motion.div
@@ -371,7 +376,7 @@ function Contributions() {
 
   return (
     <Block>
-      <Heading label="Contributions" title="GitHub" icon={<Github size={12} />} />
+      <Heading label="Contributions" title="GitHub" icon={<Github size={12} />} right={<Art src="coffee" />} />
       <div className="mt-6 overflow-x-auto pb-2">
         <div className="relative mb-1.5 h-3 w-max text-[10px] text-[var(--muted)]" style={{ width: weeks.length * 13 }}>
           {months.map((m) => <span key={m.label + m.col} className="absolute" style={{ left: m.col * 13 }}>{m.label}</span>)}
@@ -399,7 +404,7 @@ function Contributions() {
 function Certs() {
   return (
     <Block>
-      <Heading label="Paper of" title="Certifications" icon={<Award size={12} />} />
+      <Heading label="Paper of" title="Certifications" icon={<Award size={12} />} right={<Art src="pencil" />} />
       <div className="mt-6 divide-y divide-[var(--line)]">
         {certifications.map((c) => (
           <a key={c.name} href={c.link || undefined} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-lg px-2 py-4 transition hover:bg-[var(--soft)]">
@@ -425,7 +430,7 @@ function Footer() {
   return (
     <footer id="contact" data-reveal className="frame px-3 pt-14 sm:px-5">
       <div className="flex flex-col items-center gap-6 sm:flex-row">
-        <img src="/hero.png" alt="" className="h-32" />
+        <img src="/art/team.png" alt="" className="h-28 sm:h-32" />
         <div className="w-full border-[var(--line)] text-center sm:border-l sm:pl-6 sm:text-left">
           <p className="label justify-center sm:justify-start">Socials</p>
           <div className="mt-2 flex justify-center gap-3 text-[var(--muted)] sm:justify-start">
