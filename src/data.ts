@@ -12,7 +12,8 @@ export const profile = {
   links: {
     github: "https://github.com/SinhleM",
     linkedin: "https://www.linkedin.com/in/sinhle-mkhabela-0b6812345/",
-    resume: "", // add /resume.pdf to the public folder, then set this to "/resume.pdf"
+    resume: "/resume", // page that shows the CV
+    cv: "/cv/Sinhle_Mkhabela_CV.pdf",
   },
 };
 
@@ -42,17 +43,17 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "FastAPI", "Next.js", "PostgreSQL", "Claude Haiku 4.5"],
     link: "https://sorae.co.za",
-    image: "/sorae.png",
+    image: "/project-sorae.png",
   },
   {
-    name: "Entry",
+    name: "ClearEntry",
     tag: "AI · Customs",
     summary:
       "The AI copilot for South African customs clearing. Turns shipment documents into a checked worksheet and SAD 509 data, so declarants clear more entries with less retyping and full traceability.",
     points: [],
     stack: ["Next.js", "TypeScript", "LLMs", "PostgreSQL"],
-    image: "/Entry.png",
-    status: "Building",
+    link: "https://clearentry.co.za",
+    image: "/project-clearentry.png",
   },
   {
     name: "TenderFill",
@@ -61,8 +62,8 @@ export const projects: Project[] = [
       "Reads a tender with South African suppliers and contractors, flags what could get a bid disqualified (an expired certificate, a missing form, a briefing you can't miss) and helps fix it before the closing date.",
     points: [],
     stack: ["Next.js", "TypeScript", "LLMs", "RAG"],
-    image: "/TenderFill.png",
-    status: "Building",
+    link: "https://tenderfill.co.za",
+    image: "/project-tenderfill.png",
   },
   {
     name: "Supplier Risk Agent",
@@ -132,6 +133,7 @@ export const experience = [
     period: "2023 – 2026",
     location: "Pretoria",
     link: "https://www.eduvos.com",
+    linkedin: "https://www.linkedin.com/school/eduvos/posts/",
     skills: ["C#", "Databases", "AI Techniques"],
     detail:
       "Database Systems, Systems Analysis & Design, AI Techniques, OOP (C#), IT Project Management, 4IR Technologies.",
@@ -146,8 +148,8 @@ export const skills: Record<string, string[]> = {
 };
 
 export const certifications = [
-  { name: "AWS Cloud Practitioner Essentials", issuer: "AWS", link: "" },
-  { name: "Python for Data Science, AI & Development", issuer: "IBM", link: "" },
-  { name: "Introduction to Data Engineering", issuer: "IBM", link: "" },
-  { name: "Programming with JavaScript", issuer: "Meta", link: "" },
+  { name: "AWS Cloud Practitioner Essentials", link: "https://coursera.org/verify/MM7JAA0ALQAQ", issuer: "AWS" },
+  { name: "Python for Data Science, AI & Development", link: "https://coursera.org/verify/4R3SL16H7VLP", issuer: "IBM" },
+  { name: "Introduction to Data Engineering", link: "https://coursera.org/verify/4UKYPAIQ3TMF", issuer: "IBM" },
+  { name: "Programming with JavaScript", link: "https://coursera.org/verify/5IBC3JQJY023", issuer: "Meta" },
 ];

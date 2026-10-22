@@ -177,3 +177,17 @@ body {
 .art { animation: float 6s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(-5px) rotate(-1.5deg); } }
 @media (prefers-reduced-motion: reduce) { .art { animation: none; } }
+
+/* header name: letters fold away one by one on scroll down, return on scroll up */
+.name-letters { display: inline-flex; white-space: nowrap; }
+.name-letters > span { display: inline-block; max-width: 1em; overflow: hidden;
+  transition: max-width .25s ease, opacity .2s ease, transform .25s ease; }
+.name-letters > span.off { max-width: 0; opacity: 0; transform: translateX(-3px); }
+@media (prefers-reduced-motion: reduce) { .name-letters > span { transition: none; } }
+
+/* quiet bordered button (resume) */
+.ghost-btn { display: inline-flex; align-items: center; gap: .4rem; height: 2.1rem; padding: 0 .8rem; border-radius: .5rem;
+  font-size: .8rem; font-weight: 600; color: var(--muted); background: var(--bg); border: 1px solid #a1a1aa;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06); transition: color .2s, border-color .2s, background .2s, transform .15s; }
+.ghost-btn:hover { color: var(--fg); border-color: #52525b; background: var(--soft); }
+.ghost-btn:active { transform: translateY(1px); }

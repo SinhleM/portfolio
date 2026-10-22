@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 import {
-  ArrowUpRight, Award, Briefcase, ChevronLeft, ChevronRight, FileDown, Github, Globe, GraduationCap,
+  ArrowUpRight, Award, Briefcase, ChevronLeft, ChevronRight, FileDown, FileText, Github, Globe, GraduationCap,
   Linkedin, Mail, MapPin, Phone, Rocket, Sparkles,
 } from "lucide-react";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
@@ -83,8 +83,20 @@ function DeskArt({ className = "" }: { className?: string }) {
 /* ---------- top bar ---------- */
 function TopBar() {
   const [scrolled, setScrolled] = useState(false);
+  const total = profile.name.length;
+  const [shown, setShown] = useState(total); // letters visible; full name on load
   useEffect(() => {
-    const f = () => setScrolled(window.scrollY > 10);
+    let last = window.scrollY;
+    let v = total;
+    const PX = 18; // pixels of scroll per letter
+    const f = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      // scrolling down removes letters one by one, scrolling up brings them back
+      v = y < 40 ? total : Math.min(total, Math.max(0, v - (y - last) / PX));
+      last = y;
+      setShown(Math.round(v));
+    };
     f();
     window.addEventListener("scroll", f, { passive: true });
     return () => window.removeEventListener("scroll", f);
@@ -93,8 +105,8 @@ function TopBar() {
     <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 glass ${scrolled ? "scrolled" : ""}`}>
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4">
         <a href="#top" className="flex items-center gap-2 text-sm font-bold">
-          <img src="/favicon-192.png" alt="" className="h-8 w-8 object-contain" />
-          <span className={`transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0"}`}>{profile.name}</span>
+          <img src="/art/projects-rocket.png" alt="" className="art h-9 w-auto object-contain" />
+          <span className="name-letters" aria-label={profile.name}>{[...profile.name].map((ch, i) => <span key={i} aria-hidden className={i < shown ? "" : "off"}>{ch === " " ? " " : ch}</span>)}</span>
         </a>
         <nav className="flex items-center gap-1 text-sm font-semibold text-[var(--muted)]">
           {["career", "projects", "contact"].map((s) => (
@@ -119,7 +131,7 @@ function Hero() {
     <section id="top" className="pt-14">
       <div className="frame banner relative flex h-60 items-center justify-center overflow-hidden">
         {/* TEMP: your image. Swap back to <DeskArt className="up h-36 sm:h-44" /> to compare */}
-        <img src="/art/desk.png" alt="" className="up h-48 sm:h-52" />
+        <span className="up block"><img src="/art/hero-laptop.png" alt="" className="art h-44 sm:h-48" /></span>
       </div>
       <div className="frame px-3 pb-8 pt-7 sm:px-5">
         <h1 className="up text-4xl font-extrabold tracking-tight sm:text-[2.75rem]" style={{ animationDelay: ".05s" }}>{profile.name}</h1>
@@ -182,7 +194,7 @@ function Career() {
         right={profile.links.resume ? (
           <div className="flex items-center gap-3 text-sm text-[var(--muted)]">
             <span className="hidden sm:inline">Need a copy?</span>
-            <a href={profile.links.resume} className="key"><FileDown size={14} />Resume</a>
+            <a href={profile.links.resume} className="ghost-btn"><FileText size={14} />Resume</a>
           </div>
         ) : undefined}
       />
@@ -212,8 +224,8 @@ function Career() {
                       {on && x.link && (
                         <a href={x.link} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label="Website" className="text-[var(--muted)] hover:text-[var(--fg)]"><Globe size={14} /></a>
                       )}
-                      {on && (
-                        <a href={profile.links.linkedin} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label="LinkedIn" className="text-[var(--muted)] hover:text-[var(--fg)]"><Linkedin size={13} /></a>
+                      {on && x.linkedin && (
+                        <a href={x.linkedin} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label="LinkedIn" className="text-[var(--muted)] hover:text-[var(--fg)]"><Linkedin size={13} /></a>
                       )}
                     </span>
                     {on && <span className="pop block text-[13px] font-semibold text-[var(--muted)]">{x.role}</span>}
@@ -237,7 +249,7 @@ function Career() {
 function Skills() {
   return (
     <Block>
-      <Heading label="Core" title="Skills" icon={<Sparkles size={12} />} right={<Art src="laptop" />} />
+      <Heading label="Core" title="Skills" icon={<Sparkles size={12} />} />
       <div className="mt-6 space-y-5">
         {Object.entries(skills).map(([group, list]) => (
           <div key={group}>
@@ -295,7 +307,7 @@ function Projects() {
   const go = (d: number) => set(([v]) => [(v + d + projects.length) % projects.length, d]);
   return (
     <Block id="projects">
-      <Heading label="Featured" title="Projects" icon={<Rocket size={12} />} right={<Art src="rocket" />} />
+      <Heading label="Featured" title="Projects" icon={<Rocket size={12} />} right={<Art src="projects-rocket" />} />
       <div className={`relative mt-6 aspect-[4/4.2] overflow-hidden rounded-2xl p-5 sm:aspect-[16/11] sm:p-12 ${gradients[i % gradients.length]}`}>
                 <AnimatePresence mode="popLayout" custom={dir} initial={false}>
           <motion.div
@@ -376,7 +388,7 @@ function Contributions() {
 
   return (
     <Block>
-      <Heading label="Contributions" title="GitHub" icon={<Github size={12} />} right={<Art src="coffee" />} />
+      <Heading label="Contributions" title="GitHub" icon={<Github size={12} />} />
       <div className="mt-6 overflow-x-auto pb-2">
         <div className="relative mb-1.5 h-3 w-max text-[10px] text-[var(--muted)]" style={{ width: weeks.length * 13 }}>
           {months.map((m) => <span key={m.label + m.col} className="absolute" style={{ left: m.col * 13 }}>{m.label}</span>)}
@@ -404,18 +416,24 @@ function Contributions() {
 function Certs() {
   return (
     <Block>
-      <Heading label="Paper of" title="Certifications" icon={<Award size={12} />} right={<Art src="pencil" />} />
+      <Heading label="Paper of" title="Certifications" icon={<Award size={12} />} />
       <div className="mt-6 divide-y divide-[var(--line)]">
-        {certifications.map((c) => (
-          <a key={c.name} href={c.link || undefined} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-lg px-2 py-4 transition hover:bg-[var(--soft)]">
-            <IssuerLogo issuer={c.issuer} />
-            <div className="flex-1">
-              <p className="text-sm font-semibold">{c.name}</p>
-              <p className="text-xs text-[var(--muted)]">@ {c.issuer}</p>
-            </div>
-            <ArrowUpRight size={16} className="text-[var(--muted)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--fg)]" />
-          </a>
-        ))}
+        {certifications.map((c) => {
+          const inner = (
+            <>
+              <IssuerLogo issuer={c.issuer} />
+              <div className="flex-1">
+                <p className="text-sm font-semibold">{c.name}</p>
+                <p className="text-xs text-[var(--muted)]">@ {c.issuer}</p>
+              </div>
+              {c.link && <ArrowUpRight size={16} className="text-[var(--muted)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--fg)]" />}
+            </>
+          );
+          // only rows with a certificate URL are links
+          return c.link
+            ? <a key={c.name} href={c.link} target="_blank" rel="noreferrer" className="group flex items-center gap-4 rounded-lg px-2 py-4 transition hover:bg-[var(--soft)]">{inner}</a>
+            : <div key={c.name} className="flex items-center gap-4 px-2 py-4">{inner}</div>;
+        })}
       </div>
     </Block>
   );
@@ -430,7 +448,7 @@ function Footer() {
   return (
     <footer id="contact" data-reveal className="frame px-3 pt-14 sm:px-5">
       <div className="flex flex-col items-center gap-6 sm:flex-row">
-        <img src="/art/team.png" alt="" className="h-28 sm:h-32" />
+        <img src="/art/footer-coffee.png" alt="" className="art h-28 sm:h-32" />
         <div className="w-full border-[var(--line)] text-center sm:border-l sm:pl-6 sm:text-left">
           <p className="label justify-center sm:justify-start">Socials</p>
           <div className="mt-2 flex justify-center gap-3 text-[var(--muted)] sm:justify-start">
