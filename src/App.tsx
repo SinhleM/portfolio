@@ -361,10 +361,10 @@ function Contributions() {
   const [data, setData] = useState<{ total: number; days: Day[] }>(contrib);
   useEffect(() => {
     const ctrl = new AbortController();
-    fetch(`https://github-contributions-api.jogruber.de/v4/${contrib.user}?y=last`, { signal: ctrl.signal })
+    fetch("/api/contributions", { signal: ctrl.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((j: { total: Record<string, number>; contributions: Day[] }) => {
-        if (j.contributions?.length) setData({ total: j.total.lastYear ?? Object.values(j.total)[0], days: j.contributions });
+      .then((j: { total: number; days: Day[] }) => {
+        if (j.days?.length) setData({ total: j.total, days: j.days });
       })
       .catch(() => { /* keep snapshot */ });
     return () => ctrl.abort();
